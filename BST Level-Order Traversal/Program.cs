@@ -7,13 +7,31 @@ namespace BST_Level_Order_Traversal
     {
         static void levelOrder(Node root)
         {
-            Node temp = root;
+            Node tempNode = root;
 
             Queue<Node> nodeQueue = new Queue<Node>();
 
-            while(temp != null)
+            while (tempNode != null)
             {
-                Console.WriteLine(temp.data + " ");
+                Console.Write(tempNode.data + " ");
+
+                if (tempNode.left != null)
+                {
+                    nodeQueue.Enqueue(tempNode.left);
+                }
+                if (tempNode.right != null)
+                {
+                    nodeQueue.Enqueue(tempNode.right);
+                }
+                if (nodeQueue.Count == 0)
+                {
+                    tempNode = null;
+                }
+                else
+                {
+                    tempNode = nodeQueue.Dequeue();
+                }
+
             }
         }
 
